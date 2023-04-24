@@ -1,12 +1,12 @@
-# EXPERIMENT-NO--03-INTERFACING-ANALOG-INPUT-SENSOR-POT-WITH-ARDUINO-
+# EXPERIMENT-NO--02-INTERFACING-ANALOG-INPUT-SENSOR-POT-WITH-ARDUINO-
 
 
 
 
-**AIM**:  To interface a Analog  input (angular displacement sensor POT) and scale the values up on change in the input.
+## **AIM**:  To interface a Analog  input (angular displacement sensor POT) and scale the values up on change in the input.
 
 
-**COMPONENTS REQUIRED:**
+## **COMPONENTS REQUIRED:**
 1.	10 KΩPOT
 2.	1 KΩ resistor 
 3.	Arduino Uno 
@@ -16,9 +16,9 @@
 **
 
 
-**THEORY**: 
+## **THEORY**: 
 
-**Analog signals:**
+## **Analog signals:**
 
 Analog signals – directly measurable quantities in terms of some other quantity.
 Examples:
@@ -41,7 +41,7 @@ General specifications of analog sensor
 **Potentiometer**
 A potentiometer, informally a pot, is a three-terminal resistor with a sliding or rotating contact that forms an adjustable voltage divider. If only two terminals are used, one end and the wiper, it acts as a variable resistor or rheostat.
 Potentiometers are commonly used to control electrical devices such as volume controls on audio equipment. Potentiometers operated by a mechanism can be used as position transducers, for example, in a joystick. Potentiometers are rarely used to directly control significant power (more than a watt), since the power dissipated in the potentiometer would be comparable to the power in the controlled load
-CIRCUIT DIAGRAM
+## CIRCUIT DIAGRAM
 
 
 
@@ -52,7 +52,7 @@ CIRCUIT DIAGRAM
 **FIGURE -01
 **
 
-**PROCEDURE:**
+## **PROCEDURE:**
 
 1.	Connect the circuit as per the circuit diagram 
 2.	Connect the board to your computer via the USB cable.
@@ -66,7 +66,34 @@ CIRCUIT DIAGRAM
 
 
 
-**PROGRAM** 
+## **PROGRAM** 
+```
+int potPin= A5;
+int ledPin= 2;
+
+void setup()
+{
+  pinMode (potPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+  
+}
+
+void loop()
+{
+ int potMesure = analogRead(A5);
+  Serial.print("Sensor Value: ");
+  Serial.println(potMesure);
+  if (potMesure>=650)
+  {
+    digitalWrite(2, HIGH);
+  }
+  else
+    digitalWrite(2, LOW);
+  
+  
+}
+```
  
 
 
@@ -77,12 +104,16 @@ CIRCUIT DIAGRAM
 
 
 
-**
-**Simulation output:** 
-**
+
+## Simulation output: 
 
 
-[My image](username.github.com/repository/img/image.jpg)
+### OFF STATE :
+
+![Screenshot (22)](https://user-images.githubusercontent.com/121165996/233997396-53e6742d-e051-4ee5-b892-70b2a55071e2.png)
+
+### ON STATE :
+![Screenshot (23)](https://user-images.githubusercontent.com/121165996/233997569-ce43aec4-470a-44b8-814c-c08b00d6113e.png)
 
 
 
@@ -90,4 +121,9 @@ CIRCUIT DIAGRAM
 
 
 
-**RESULT: ** Arduino uno analog input functioning is learned and interfaced with digital input switch .
+
+
+
+
+## RESULT: 
+Arduino uno analog input functioning is learned and interfaced with digital input switch .
